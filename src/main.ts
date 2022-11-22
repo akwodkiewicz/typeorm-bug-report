@@ -1,10 +1,11 @@
-import { Equal } from "typeorm";
 import { dataSource } from "./data-source";
+import { PostId } from "./entities/post-id";
 import { Post } from "./entities/post.entity";
+import { UserId } from "./entities/user-id";
 import { User } from "./entities/user.entity";
 
-const USER_ID = "abcd-1234";
-const POST_ID = "first";
+const USER_ID = new UserId("abcd-1234");
+const POST_ID = new PostId("first");
 
 async function insertData() {
   const user = dataSource.manager.create(User, {
@@ -22,7 +23,7 @@ async function insertData() {
 
 async function retrieveData() {
   const postWithAuthor = await dataSource.manager.find(Post, {
-    where: { authorId: Equal(USER_ID) },
+    where: { authorId: USER_ID },
     relations: { author: true },
   });
   console.log("\n" + JSON.stringify(postWithAuthor) + "\n");
