@@ -2,6 +2,8 @@
 
 This repository is a minimal, complete and verifiable example of a bug I stumbled upon when working with typeorm.
 
+Link to reported issue: https://github.com/typeorm/typeorm/issues/9565
+
 ## How To Use This Repository
 
 There are 2 branches:
